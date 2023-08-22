@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
  //   QQuickStyle::setStyle("Basic");
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/sonegx-video-editor/Main.qml"_qs);
+    const QUrl url(u"qrc:/src/qml/Main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
         &app, []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
