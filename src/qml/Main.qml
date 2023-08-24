@@ -54,8 +54,9 @@ ApplicationWindow {
             anchors.leftMargin: 5
             anchors.bottomMargin: 5
             anchors.topMargin: 5
-            spacing: 1
+            spacing: 5
             Views.ItemProperties{}
+            Views.InteractionElements{}
 
         }
     }
