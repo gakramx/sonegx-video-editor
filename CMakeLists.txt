@@ -18,6 +18,8 @@ qt_add_qml_module(appsonegx-video-editor
     URI sonegx-video-editor
     VERSION 1.0
     RESOURCES QML_FILES_RC.qrc
+    QML_FILES src/qml/Views/ItemProperties.qml
+      QML_FILES src/qml/Main.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
