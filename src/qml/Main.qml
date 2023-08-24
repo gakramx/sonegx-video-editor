@@ -12,7 +12,7 @@ ApplicationWindow {
     title: qsTr("Sonegx video editor")
     palette: darkTheme
     menuBar: MenuBar {
-           palette.dark: "#888a96"
+        palette.dark: "#888a96"
         Menu {
 
             title: qsTr("&File")
@@ -36,25 +36,20 @@ ApplicationWindow {
     }
     SplitView {
         id: splitView
-        width: parent.width/5
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
+        anchors.fill: parent
+
         orientation: Qt.Horizontal
         ColumnLayout {
             id:propertyColumnLayout
+            width: parent.width/5
             anchors.left: parent.left
-            anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            anchors.rightMargin: 5
-            anchors.leftMargin: 5
             anchors.bottomMargin: 5
+            anchors.leftMargin: 5
             anchors.topMargin: 5
             spacing: 5
+            clip: true
             Views.ItemProperties{}
             Views.InteractionElements{}
 
