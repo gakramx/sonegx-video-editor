@@ -54,6 +54,14 @@ ApplicationWindow {
             Views.InteractionElements{}
 
         }
+        Views.VideoPlayer{
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 5
+            anchors.rightMargin: 5
+            anchors.topMargin: 5
+        }
     }
     Palette {
         id: darkTheme
