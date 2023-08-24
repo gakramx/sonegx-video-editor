@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>src/qml/Main.qml</file>
         <file>src/qml/Views/ItemProperties.qml</file>
+        <file>src/qml/Views/InteractionElements.qml</file>
     </qresource>
 </RCC>
