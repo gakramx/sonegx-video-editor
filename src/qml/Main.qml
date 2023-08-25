@@ -4,6 +4,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import "Views" as Views
+
 ApplicationWindow {
     id:mainwin
     width: 640
@@ -14,7 +15,6 @@ ApplicationWindow {
     menuBar: MenuBar {
         palette.dark: "#888a96"
         Menu {
-
             title: qsTr("&File")
             Action { text: qsTr("&New...") }
             Action { text: qsTr("&Open...") }

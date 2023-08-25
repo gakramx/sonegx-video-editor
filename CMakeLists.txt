@@ -21,6 +21,7 @@ qt_add_qml_module(appsonegx-video-editor
     QML_FILES src/qml/Main.qml
     QML_FILES src/qml/Views/InteractionElements.qml
     QML_FILES src/qml/Views/VideoPlayer.qml
+    QML_FILES src/qml/Elements/CircleElement.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

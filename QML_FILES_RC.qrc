@@ -4,5 +4,6 @@
         <file>src/qml/Views/ItemProperties.qml</file>
         <file>src/qml/Views/InteractionElements.qml</file>
         <file>src/qml/Views/VideoPlayer.qml</file>
+        <file>src/qml/Elements/CircleElement.qml</file>
     </qresource>
 </RCC>

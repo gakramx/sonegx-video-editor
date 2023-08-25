@@ -6,7 +6,6 @@ import QtQuick.Layouts
 Rectangle {
     id:videoPlayer
     color:"#00000000"
-
     Rectangle{
         id: videoSpace
         border.width:3
@@ -27,10 +26,9 @@ Rectangle {
     }
     RowLayout{
         id:rowLayoutButtons
-        x:(videoPlayer.width/2)-width/2
+        x: ( videoPlayer.width / 2 ) - ( width / 2 )
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-
         clip:true
         Button {
             id: button

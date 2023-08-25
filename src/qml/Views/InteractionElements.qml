@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
+import "../Elements" as Elements
 GroupBox {
     id: interactionelements
     title: qsTr("Interaction elements")
@@ -20,7 +21,7 @@ GroupBox {
         ColumnLayout {
             id:itemPropertiesColumnLayout
             anchors.fill: parent
-
+            Elements.CircleElement{}
         }
     }
 }
