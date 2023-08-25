@@ -37,30 +37,52 @@ ApplicationWindow {
     SplitView {
         id: splitView
         anchors.fill: parent
-
         orientation: Qt.Horizontal
         ColumnLayout {
             id:propertyColumnLayout
-            width: parent.width/5
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 5
-            anchors.leftMargin: 5
-            anchors.topMargin: 5
+            SplitView.fillHeight: true
+            SplitView.minimumWidth: parent.width/5
+            SplitView.preferredWidth: parent.width/5
+            SplitView.maximumWidth:parent.width/4
             spacing: 5
             clip: true
             Views.ItemProperties{}
             Views.InteractionElements{}
 
         }
-        Views.VideoPlayer{
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 5
-            anchors.rightMargin: 5
-            anchors.topMargin: 5
+
+        SplitView {
+            id: splitView1
+            orientation: Qt.Vertical
+            SplitView.fillWidth: true
+
+            SplitView {
+                id: splitView2
+                SplitView.fillWidth: true
+                SplitView.fillHeight: true
+                orientation: Qt.Horizontal
+
+                Rectangle{
+                    SplitView.fillHeight: true
+                    SplitView.minimumWidth: parent.width/5
+                    SplitView.preferredWidth: parent.width/5
+                    SplitView.maximumWidth:parent.width/4
+                    color:"#00000000"
+                }
+                Views.VideoPlayer{
+
+                }
+
+            }
+            Rectangle{
+                SplitView.fillWidth: true
+                SplitView.minimumHeight: 50
+                SplitView.preferredHeight: 50
+                SplitView.maximumHeight: 100
+
+                color:"#00000000"
+            }
+
         }
     }
     Palette {
