@@ -5,33 +5,32 @@ import QtMultimedia
 import QtQuick.Layouts
 Rectangle {
     id:videoPlayer
+    color:"#00000000"
+
     Rectangle{
         id: videoSpace
-        border.width:5
+        border.width:3
+        border.color: "#5a5c64"
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: rowLayoutButtons.top
         anchors.bottomMargin: 10
-        anchors.topMargin: 0
-        anchors.leftMargin: 0
-        anchors.rightMargin: 0
-        color:"red"
+        anchors.topMargin: 10
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
+        color:"#00000000"
         Video{
             id:player
             anchors.fill: parent
         }
     }
-
-
     RowLayout{
         id:rowLayoutButtons
-        anchors.left: parent.left
-        anchors.right: parent.right
+        x:(videoPlayer.width/2)-width/2
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
-        anchors.leftMargin: parent.width /5
-        anchors.rightMargin:  parent.width /5
+        anchors.bottomMargin: 10
+
         clip:true
         Button {
             id: button
