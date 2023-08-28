@@ -9,30 +9,54 @@ Rectangle {
     height: 100
     color: "#00000000"
     property bool isChild: false
+    property point originalPosition
+    Drag.active: drage.drag.active
     MouseArea {
         id:drage
         width: parent.width
         height: parent.height
         property Item newCircleElement: null
-
         onPressed: (mouse)=>{
                        if (parent.isChild==false){
                            newCircleElement = createNewCircleElement(mouse.x,mouse.y);
-                           newCircleElement.z=100
                            drage.drag.target=newCircleElement
-                           console.log("parent",parent)
-                           console.log("parent ",newCircleElement.parent)
+                           newCircleElement.Drag.active= true
                        }
-                       else
-                       drage.drag.target=parent
-                   }
-        onReleased: {
-            // Assign a new state to the rectangle
-        }
+                       else{
+                           drage.drag.target=parent
+                           originalPosition = Qt.point(parent.x, parent.y);
 
+                       }
+                   }
+        onReleased: (mouse) => {
+                        if (drage.newCircleElement) {
+                            if (videoPlayer.dropArea.containsDrag) {
+                                // Drop inside the DropArea, update the color of the dropped instance
+                                drage.newCircleElement.color = "blue";
+                                newCircleElement.Drag.active=false
+                            } else {
+                                drage.newCircleElement.destroy();
+                            }
+                        }
+                        if (drage.drag.target==parent) {
+                            parent.Drag.active= true
+                            if (videoPlayer.dropArea.containsDrag) {
+                                // Drop inside the DropArea, update the color of the dropped instance
+                                drage.drag.target.color = "green";
+                                drage.drag.target.Drag.active= false
+                            } else {
+                                console.log("restore")
+                                drage.drag.target.x = originalPosition.x;
+                                drage.drag.target.y = originalPosition.y;
+                                drage.drag.target.Drag.active= false
+                            }
+
+                        }
+
+                    }
         onPositionChanged: (mouse)=>{
-                               if(drage.drag.active)
-                                drage.newCircleElement.parent=splitView.parent
+                               if(drage.drag.active && newCircleElement!=null)
+                               drage.newCircleElement.parent= splitView.parent
                            }
 
     }
@@ -46,7 +70,6 @@ Rectangle {
                                               "isChild":true
                                           });
         }
-
     }
 
     Rectangle {
