@@ -9,6 +9,10 @@ GroupBox {
     Layout.fillHeight: true
     Layout.fillWidth: true
     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+
+    property QtObject mainWindow: mainwin
+
+
     Flickable{
         anchors.fill: parent
         clip: true
@@ -21,7 +25,10 @@ GroupBox {
         ColumnLayout {
             id:itemPropertiesColumnLayout
             anchors.fill: parent
-            Elements.CircleElement{}
+            Elements.CircleElement{
+                id:circleElement
+            }
+
         }
     }
 }
