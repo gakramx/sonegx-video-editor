@@ -6,6 +6,8 @@ import QtQuick.Layouts
 Rectangle {
     id:videoPlayer
     color:"#00000000"
+    property Item dropArea: dropArea
+
     Rectangle{
         id: videoSpace
         border.width:3
@@ -19,6 +21,27 @@ Rectangle {
         anchors.leftMargin: 10
         anchors.rightMargin: 10
         color:"#00000000"
+        DropArea {
+            id: dropArea
+            anchors.fill: parent
+            onDropped: {console.log("Test")}
+            onContainsDragChanged: {
+                if (containsDrag) {
+                    console.log("containsDrag")
+                } else {
+                    console.log("No containsDrag")
+                }
+            }
+            onEntered: {
+
+                console.log("ENTERED")
+            }
+            Rectangle {
+                anchors.fill: parent
+                id: videoPlayer2
+                color: "red"
+            }
+        }
         Video{
             id:player
             anchors.fill: parent
