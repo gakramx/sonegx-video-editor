@@ -12,6 +12,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("Sonegx video editor")
     palette: darkTheme
+    property Item videoPlayer: videoPlayer
     menuBar: MenuBar {
         palette.dark: "#888a96"
         Menu {
@@ -47,7 +48,9 @@ ApplicationWindow {
             spacing: 5
             clip: true
             Views.ItemProperties{}
-            Views.InteractionElements{}
+            Views.InteractionElements{
+
+            }
 
         }
 
@@ -70,6 +73,7 @@ ApplicationWindow {
                     color:"#00000000"
                 }
                 Views.VideoPlayer{
+                    id:videoPlayer
 
                 }
 
