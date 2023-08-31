@@ -7,20 +7,13 @@ Rectangle {
     id:videoPlayer
     color:"#00000000"
     property Item dropArea: dropArea
-
+     property Item videoArea: videoArea
     Rectangle{
-        id: videoSpace
-        border.width:3
-        border.color: "#5a5c64"
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: rowLayoutButtons.top
-        anchors.bottomMargin: 10
-        anchors.topMargin: 10
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
-        color:"#00000000"
+        id:videoArea
+        width: 854
+        height: 480
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
         DropArea {
             id: dropArea
             anchors.fill: parent
@@ -46,7 +39,7 @@ Rectangle {
             id:player
             anchors.fill: parent
         }
-    }
+}
     RowLayout{
         id:rowLayoutButtons
         x: ( videoPlayer.width / 2 ) - ( width / 2 )
