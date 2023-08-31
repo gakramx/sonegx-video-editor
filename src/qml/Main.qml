@@ -5,10 +5,11 @@ import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import "Views" as Views
 
+
 ApplicationWindow {
     id:mainwin
-    width: 640
-    height: 480
+    width: 1200
+    height: 700
     visible: true
     title: qsTr("Sonegx video editor")
     palette: darkTheme
@@ -42,51 +43,31 @@ ApplicationWindow {
         ColumnLayout {
             id:propertyColumnLayout
             SplitView.fillHeight: true
-            SplitView.minimumWidth: parent.width/5
-            SplitView.preferredWidth: parent.width/5
-            SplitView.maximumWidth:parent.width/4
+            SplitView.minimumWidth: parent.width/7
+            SplitView.preferredWidth: parent.width/7
+            SplitView.maximumWidth:parent.width/6
             spacing: 5
             clip: true
             Views.ItemProperties{}
             Views.InteractionElements{
-
             }
 
         }
-
         SplitView {
             id: splitView1
-            orientation: Qt.Vertical
+            orientation: Qt.Horizontal
             SplitView.fillWidth: true
-
-            SplitView {
-                id: splitView2
-                SplitView.fillWidth: true
-                SplitView.fillHeight: true
-                orientation: Qt.Horizontal
-
-                Rectangle{
-                    SplitView.fillHeight: true
-                    SplitView.minimumWidth: parent.width/5
-                    SplitView.preferredWidth: parent.width/5
-                    SplitView.maximumWidth:parent.width/4
-                    color:"#00000000"
-                }
-                Views.VideoPlayer{
-                    id:videoPlayer
-
-                }
-
-            }
             Rectangle{
-                SplitView.fillWidth: true
-                SplitView.minimumHeight: 50
-                SplitView.preferredHeight: 50
-                SplitView.maximumHeight: 100
-
+                SplitView.fillHeight: true
+                SplitView.minimumWidth: parent.width/7
+                SplitView.preferredWidth: parent.width/7
+                SplitView.maximumWidth:parent.width/6
                 color:"#00000000"
             }
+            Views.VideoPlayer{
+                id:videoPlayer
 
+            }
         }
     }
     Palette {
