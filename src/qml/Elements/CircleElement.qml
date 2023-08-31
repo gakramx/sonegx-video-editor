@@ -11,6 +11,11 @@ Rectangle {
     property bool isChild: false
     property point originalPosition
     Drag.active: drage.drag.active
+    SequentialAnimation {
+        id: scaleAnimation
+        NumberAnimation { target: drage.newCircleElement; property: "scale"; to: 1.2; duration: 100 }
+        NumberAnimation { target: drage.newCircleElement; property: "scale"; to: 1; duration: 100; running: false }
+    }
     MouseArea {
         id:drage
         width: parent.width
@@ -55,6 +60,7 @@ Rectangle {
                                 // The entire item is inside the drop area and contains a drag, allow dropping
                                 drage.newCircleElement.color = "blue";
                                 drage.newCircleElement.Drag.active = false;
+                                scaleAnimation.start()
                             } else {
                                 // Either the item is not fully inside the drop area or no drag is present, disallow dropping
                                 drage.newCircleElement.Drag.active = false;
@@ -118,6 +124,7 @@ Rectangle {
         }
     }
 
+
     Rectangle {
         id:pointElement
         color: "#048659"
@@ -135,6 +142,7 @@ Rectangle {
                 height= 60
             }
         }
+
     }
 
     Label {
