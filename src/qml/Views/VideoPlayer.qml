@@ -7,7 +7,8 @@ Rectangle {
     id:videoPlayer
     color:"#00000000"
     property Item dropArea: dropArea
-     property Item videoArea: videoArea
+    property Item videoArea: videoArea
+     property Item player: player
     Rectangle{
         id:videoArea
         width: 854
@@ -39,7 +40,7 @@ Rectangle {
             id:player
             anchors.fill: parent
         }
-}
+    }
     RowLayout{
         id:rowLayoutButtons
         x: ( videoPlayer.width / 2 ) - ( width / 2 )

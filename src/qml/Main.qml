@@ -3,6 +3,7 @@ import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import "Views" as Views
 
 
@@ -22,7 +23,10 @@ ApplicationWindow {
         Menu {
             title: qsTr("&File")
             Action { text: qsTr("&New...") }
-            Action { text: qsTr("&Open...") }
+            Action {
+                text: qsTr("&Open...")
+                onTriggered: fileDialog.open()
+            }
             Action { text: qsTr("&Save") }
             Action { text: qsTr("Save &As...") }
             MenuSeparator { }
@@ -71,6 +75,13 @@ ApplicationWindow {
                 id:videoPlayer
 
             }
+        }
+    }
+    FileDialog {
+        id: fileDialog
+        onAccepted:{
+            console.log(selectedFile)
+         videoPlayer.player.source =selectedFile
         }
     }
     Palette {
