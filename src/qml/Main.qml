@@ -10,6 +10,9 @@ ApplicationWindow {
     id:mainwin
     width: 1200
     height: 700
+    // Set minimum width and height
+    minimumWidth: 1200
+    minimumHeight: 700
     visible: true
     title: qsTr("Sonegx video editor")
     palette: darkTheme

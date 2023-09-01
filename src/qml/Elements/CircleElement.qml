@@ -36,7 +36,6 @@ Rectangle {
                            drag.maximumY= videoPlayer.dropArea.parent.height - parent.height
                            drage.drag.target=parent
                            originalPosition = Qt.point(parent.x, parent.y);
-
                        }
                    }
         onReleased: (mouse) => {
