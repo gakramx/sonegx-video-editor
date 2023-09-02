@@ -81,7 +81,7 @@ ApplicationWindow {
         id: fileDialog
         onAccepted:{
             console.log(selectedFile)
-         videoPlayer.player.source =selectedFile
+            videoPlayer.player.source =selectedFile
         }
     }
     Palette {

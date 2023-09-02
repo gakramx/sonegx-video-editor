@@ -8,7 +8,7 @@ Rectangle {
     color:"#00000000"
     property Item dropArea: dropArea
     property Item videoArea: videoArea
-     property Item player: player
+    property Item player: player
     Rectangle{
         id:videoArea
         width: 854
@@ -39,6 +39,74 @@ Rectangle {
         Video{
             id:player
             anchors.fill: parent
+            onSourceChanged:play_btn.enabled=true
+            onPlaybackStateChanged: {
+            }
+            function playPause(){
+                if(player.playbackState === MediaPlayer.PlayingState){
+                    play_btn.text= "Play"
+                 player.pause()
+                }
+
+                else{
+                    play_btn.text= "Stop"
+                  player.play()
+                }
+            }
+        }
+
+    }
+    Slider {
+        id: progressSlider
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: rowLayoutButtons.top
+        anchors.rightMargin: 20
+        anchors.leftMargin: 20
+        anchors.bottomMargin: 10
+        z: 1
+        enabled: player.seekable
+        value: player.duration > 0 ? player.position / player.duration : 0
+        onWidthChanged: {
+        }
+        onHeightChanged: {
+        }
+        background: Rectangle {
+            id: progressRect
+            implicitHeight: 4
+            color: "white"
+            radius: 3
+            anchors.verticalCenter: parent.verticalCenter
+            width: progressSlider.availableWidth
+            height: implicitHeight
+            x: progressSlider.leftPadding
+            Rectangle {
+                id: progressSliderRect
+                width: progressSlider.visualPosition * parent.width
+                height: parent.height
+                color: "#1D8BF8"
+                radius: 3
+            }
+        }
+
+        handle: Rectangle {
+
+            x: progressSlider.leftPadding + progressSlider.visualPosition
+               * (progressSlider.availableWidth - width)
+            y: progressSlider.topPadding
+               + progressSlider.availableHeight / 2 - height / 2
+            implicitWidth: 12
+            implicitHeight: 12
+            radius: 13
+            color: progressSlider.pressed ? "#1b2631" : "#f6f6f6"
+            border.color: "#bdbebf"
+
+            antialiasing: true
+        }
+        onMoved: function () {
+            player.position = player.duration * progressSlider.position
+        }
+        Component.onCompleted: {
         }
     }
     RowLayout{
@@ -54,8 +122,10 @@ Rectangle {
         }
 
         Button {
-            id: button1
-            text: qsTr("Button")
+            id: play_btn
+            enabled: !player.source
+            text: "Play"
+            onClicked: player.playPause()
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
         Button {
